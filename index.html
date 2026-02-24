@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kashyap Chaudhari | AI Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:black;
+color:white;
+overflow-x:hidden;
+}
+
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+padding:14px 35px;
+border-radius:50px;
+display:flex;
+gap:30px;
+z-index:1000;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+nav a{
+color:white;
+text-decoration:none;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#b6ff5c;
+}
+
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background-image:
+linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+background-size:100px 100px;
+}
+
+.bg-text{
+position:absolute;
+font-size:200px;
+font-weight:900;
+color:rgba(255,255,255,0.05);
+}
+
+.main-text{
+position:absolute;
+bottom:120px;
+font-size:120px;
+font-weight:900;
+}
+
+.subtitle{
+position:absolute;
+bottom:60px;
+color:#aaa;
+}
+
+.profile-img{
+width:300px;
+height:420px;
+object-fit:cover;
+border-radius:200px;
+transition:0.3s;
+}
+
+
+/* TICKER */
+
+.ticker{
+position:absolute;
+bottom:0;
+width:100%;
+background:#b6ff5c;
+color:black;
+overflow:hidden;
+white-space:nowrap;
+}
+
+.ticker-content{
+display:inline-block;
+padding:15px;
+animation:ticker 20s linear infinite;
+}
+
+@keyframes ticker{
+0%{transform:translateX(0);}
+100%{transform:translateX(-100%);}
+}
+
+
+/* SECTION */
+
+section{
+min-height:100vh;
+padding:120px 10%;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+
+/* CONTAINER */
+
+.container{
+max-width:1100px;
+width:100%;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.container.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+
+/* TEXT */
+
+h2{
+font-size:60px;
+margin-bottom:20px;
+}
+
+p{
+color:#aaa;
+line-height:1.8;
+font-size:18px;
+}
+
+
+/* ========================= */
+/* ABOUT SECTION */
+/* ========================= */
+
+.about-container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:80px;
+width:100%;
+}
+
+.about-left{
+max-width:600px;
+}
+
+.about-left h2{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.about-left p{
+color:#aaa;
+line-height:1.8;
+margin-bottom:20px;
+font-size:18px;
+}
+
+/* Highlight text */
+
+.highlight-text{
+font-size:32px;
+font-weight:700;
+color:white;
+margin-top:40px;
+}
+
+.highlight-text span{
+display:block;
+color:#b6ff5c;
+font-family:'Caveat', cursive;
+font-size:42px;
+margin-top:10px;
+}
+
+/* Stats */
+
+.about-stats{
+display:flex;
+gap:60px;
+margin-top:40px;
+}
+
+.about-stats h3{
+font-size:60px;
+color:#b6ff5c;
+}
+
+.about-stats p{
+color:#aaa;
+font-size:16px;
+}
+
+/* Image */
+
+.about-right img{
+  width: 350px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 200px;
+  border: 4px ; /* optional border color */
+  transform: translateY(-100px); /* moves image up */
+}
+
+
+
+/* SKILLS SECTION */
+
+.skills-grid{
+display:flex;
+flex-direction:column;
+gap:25px;
+margin-top:40px;
+}
+
+.skills-row{
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
+
+.skill-card{
+background:#111;
+padding:25px;
+border-radius:15px;
+border:1px solid #222;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:10px;
+width:140px;
+height:140px;
+transition:0.3s;
+cursor:pointer;
+}
+
+.skill-card:hover{
+transform:translateY(-10px) scale(1.05);
+border-color:#b6ff5c;
+box-shadow:0 0 30px rgba(182,255,92,0.25);
+}
+
+.skill-card img{
+width:50px;
+height:50px;
+}
+
+.skill-card span{
+font-weight:600;
+}
+
+/* POPUP */
+
+.popup{
+position:fixed;
+bottom:40px;
+left:50%;
+transform:translateX(-50%) scale(0);
+background:#b6ff5c;
+color:black;
+padding:15px 25px;
+border-radius:10px;
+font-weight:600;
+transition:0.3s;
+z-index:9999;
+}
+
+.popup.show{
+transform:translateX(-50%) scale(1);
+}
+/* PROJECT */
+
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:40px;
+margin-top:50px;
+}
+
+.project-card{
+background:#0c0c0c;
+border-radius:20px;
+overflow:hidden;
+border:1px solid #222;
+transition:0.4s;
+}
+
+.project-card:hover{
+transform:translateY(-10px);
+border-color:#b6ff5c;
+box-shadow:0 0 40px rgba(182,255,92,0.2);
+}
+
+.project-thumb{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.project-content{
+padding:25px;
+}
+
+.project-content h3{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.tech{
+color:#b6ff5c;
+font-size:14px;
+margin-bottom:10px;
+}
+
+.project-content p{
+margin-bottom:15px;
+}
+
+.project-content ul{
+padding-left:20px;
+margin-bottom:20px;
+}
+
+.project-content li{
+margin-bottom:5px;
+color:#aaa;
+}
+
+.project-btn{
+display:inline-block;
+padding:10px 20px;
+background:#b6ff5c;
+color:black;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+.project-btn:hover{
+background:white;
+}
+
+/* CONTACT SECTION WITH MAP BACKGROUND */
+
+#contact{
+position:relative;
+background-image:url("images/download.jpeg"); 
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+}
+
+#contact::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+}
+
+/* KEEP CONTENT ABOVE BACKGROUND */
+
+.contact-container{
+position:relative;
+z-index:2;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:80px;
+width:100%;
+}
+
+
+/* LEFT SIDE */
+
+.contact-left h2{
+font-size:60px;
+color:white;
+}
+
+.contact-left h2 span{
+color:#b6ff5c;
+}
+
+.contact-info{
+margin-top:40px;
+}
+
+.contact-info .label{
+color:#b6ff5c;
+margin-top:20px;
+font-weight:600;
+}
+
+.contact-info p{
+color:#ccc;
+}
+
+
+/* RIGHT FORM */
+
+.contact-form-box{
+background:rgba(20,20,20,0.95);
+padding:40px;
+border-radius:10px;
+position:relative;
+border:1px solid #222;
+backdrop-filter:blur(10px);
+}
+
+
+/* GREEN CORNER BORDERS */
+
+.contact-form-box::before,
+.contact-form-box::after{
+content:"";
+position:absolute;
+width:40px;
+height:40px;
+border:3px solid #b6ff5c;
+}
+
+.contact-form-box::before{
+top:-10px;
+left:-10px;
+border-right:none;
+border-bottom:none;
+}
+
+.contact-form-box::after{
+bottom:-10px;
+right:-10px;
+border-left:none;
+border-top:none;
+}
+
+
+/* FORM */
+
+.contact-form-box form{
+display:flex;
+flex-direction:column;
+gap:20px;
+width:300px;
+}
+
+.contact-form-box input,
+.contact-form-box textarea{
+background:none;
+border:none;
+border-bottom:1px solid #444;
+color:white;
+padding:10px;
+outline:none;
+font-size:15px;
+}
+
+.contact-form-box input::placeholder,
+.contact-form-box textarea::placeholder{
+color:#777;
+}
+
+.contact-form-box button{
+background:#b6ff5c;
+color:black;
+border:none;
+padding:12px;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+border-radius:5px;
+}
+
+.contact-form-box button:hover{
+background:white;
+}
+
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:900px){
+
+.contact-container{
+flex-direction:column;
+text-align:center;
+}
+
+.contact-form-box form{
+width:100%;
+}
+
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:900px){
+
+.bg-text{
+font-size:80px;
+}
+
+.main-text{
+font-size:50px;
+}
+
+.profile-img{
+width:200px;
+height:300px;
+}
+
+.skills-grid{
+grid-template-columns:repeat(2, 1fr);
+}
+
+.about-container{
+flex-direction:column;
+text-align:center;
+}
+
+.about-right img{
+width:250px;
+height:350px;
+}
+
+.about-stats{
+justify-content:center;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<nav>
+
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="bg-text">HI! .....I'M</div>
+
+<img src="images/profile.jpeg" class="profile-img">
+
+<div class="main-text">KASHYAP</div>
+
+<div class="subtitle">Building intelligent digital experiences powered by AI and modern web technologies</div>
+
+<div class="ticker">
+
+<div class="ticker-content">
+
+Artificial Intelligence ★ Machine Learning ★ Full Stack ★ Developer ★ Python ★ JavaScript ★ AI Engineer ★ 
+
+Artificial Intelligence ★ Machine Learning ★ Full Stack ★ Developer ★ Python ★ JavaScript ★ AI Engineer ★ 
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="about-container">
+
+<!-- LEFT SIDE -->
+
+<div class="about-left">
+
+<h2>A Bit About Me</h2>
+
+<p>
+Hi, I’m Kashyap — Gujarat-born, India-raised, and currently pursuing Computer Engineering. I’ve always been driven by curiosity about how technology works, which led me to explore Artificial Intelligence, Machine Learning, and modern web development. I enjoy building intelligent applications and transforming ideas into real, impactful digital experiences that solve meaningful problems.</p>
+<p> Beyond technology, you’ll often find me on the cricket field, watching movies, or exploring the latest tech gadgets. I enjoy meaningful conversations, learning from diverse experiences, and continuously evolving. For me, it’s all about growing, building, and embracing the journey while creating something meaningful along the way.</p>
+<p>
+ravel excites me. I love exploring new places, experiencing different cultures, and meeting new people. Every journey gives me fresh perspective, inspiration, and stories that influence both my creativity and the way I think.</p>
+
+<p class="highlight-text">
+That’s where development really starts  
+<span>in the everyday!</span>
+</p>
+
+<!-- STATS -->
+
+<div class="about-stats">
+
+<div>
+<h3>03+</h3>
+<p>Years Learning</p>
+</div>
+
+<div>
+<h3>3+</h3>
+<p>Completed Projects</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT SIDE IMAGE -->
+
+<div class="about-right">
+
+<img src="images/image.jpeg">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<div class="container reveal">
+
+<h2>Skills</h2>
+
+<div class="skills-grid">
+
+<!-- ROW 1 -->
+<div class="skills-row">
+
+<div class="skill-card" data-detail="HTML5 structures modern responsive websites.">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
+<span>HTML5</span>
+</div>
+
+<div class="skill-card" data-detail="CSS3 creates animations, layouts, and responsive design.">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
+<span>CSS3</span>
+</div>
+
+<div class="skill-card" data-detail="JavaScript adds interactivity and dynamic functionality.">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+<span>JavaScript</span>
+</div>
+
+<div class="skill-card" data-detail="Python is used for AI, ML, backend, and automation.">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
+<span>Python</span>
+</div>
+
+<div class="skill-card" data-detail="Java is used for enterprise applications.">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg">
+<span>Java</span>
+</div>
+
+</div>
+
+
+<!-- ROW 2 -->
+<div class="skills-row">
+
+<div class="skill-card" data-detail="MongoDB is a NoSQL database for scalable apps.">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg">
+<span>MongoDB</span>
+</div>
+
+<div class="skill-card" data-detail="MySQL is a relational database system.">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg">
+<span>MySQL</span>
+</div>
+
+<div class="skill-card" data-detail="Git is used for version control.">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg">
+<span>Git</span>
+</div>
+
+<div class="skill-card" data-detail="Node.js builds scalable backend applications.">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg">
+<span>Node.js</span>
+</div>
+
+<div class="skill-card" data-detail="Machine Learning enables intelligent systems.">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg">
+<span>Machine Learning</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- POPUP (REQUIRED) -->
+<div id="popup" class="popup"></div>
+
+</div>
+
+</section>
+
+<!-- PROJECT -->
+
+<section id="projects">
+
+<div class="container visible">
+
+<h2>Projects</h2>
+
+<div class="projects-grid">
+
+<!-- PROJECT 1 -->
+
+<div class="project-card">
+
+<img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=800" class="project-thumb">
+
+<div class="project-content">
+
+<h3>FitTrack – AI Fitness Assistant</h3>
+
+<p class="tech">HTML • CSS • JavaScript • AI Integration</p>
+
+<p>
+AI-powered fitness assistant with real-time interaction and modern UI.
+</p>
+
+<ul>
+<li>AI-powered assistant</li>
+<li>Responsive modern design</li>
+<li>Optimized performance</li>
+<li>Production-ready deployment</li>
+</ul>
+
+<a href="https://fittrack-ai-assistant.netlify.app/" target="_blank" class="project-btn">
+View Live →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- PROJECT 2 -->
+
+<div class="project-card">
+
+<img src="images/box.jpeg" class="project-thumb">
+
+<div class="project-content">
+
+<h3>Elite Sports 2.0 – Sports Booking Platform</h3>
+
+<p class="tech">HTML • CSS • JavaScript</p>
+
+<p>
+Modern sports arena booking platform with interactive UI.
+</p>
+
+<ul>
+<li>Slot booking system</li>
+<li>Responsive UI</li>
+<li>Multi-sport facility showcase</li>
+<li>Real-world use case</li>
+</ul>
+
+</div>
+
+</div>
+
+
+<!-- PROJECT 3 -->
+
+<div class="project-card">
+
+<img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800" class="project-thumb">
+
+<div class="project-content">
+
+<h3>Desi Stuff – Premium Restaurant Website</h3>
+
+<p class="tech">HTML • CSS • JavaScript</p>
+
+<p>
+Modern restaurant website with elegant UI and rich experience.
+</p>
+
+<ul>
+<li>Modern restaurant UI</li>
+<li>Responsive design</li>
+<li>Interactive menu</li>
+<li>Optimized performance</li>
+</ul>
+
+<a href="https://desi-stuff-paratha-website.vercel.app/" target="_blank" class="project-btn">
+View Live →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- PROJECT 4 -->
+
+<div class="project-card">
+
+<img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800" class="project-thumb">
+
+<div class="project-content">
+
+<h3>HOCCO Kitchen – Restaurant Platform</h3>
+
+<p class="tech">HTML • CSS • JavaScript</p>
+
+<p>
+Professional restaurant platform with modern layout.
+</p>
+
+<ul>
+<li>Professional interface</li>
+<li>Multi-section layout</li>
+<li>Responsive design</li>
+<li>Production-ready</li>
+</ul>
+
+<a href="https://hocco-kitchen-website-project.vercel.app/" target="_blank" class="project-btn">
+View Live →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="contact-container">
+
+<!-- LEFT SIDE -->
+
+<div class="contact-left">
+
+<h2>Contact us<span>.</span></h2>
+
+<div class="contact-info">
+
+<p class="label">Location</p>
+<p>618 Ramipark society ,Dindoli,Surat, Gujarat<br>India</p>
+
+<p class="label">Email</p>
+<p>kashyap3037@gmail.com</p>
+
+<p class="label">Phone</p>
+<p>+91 8320404291</p>
+
+</div>
+
+</div>
+
+
+<!-- RIGHT SIDE FORM -->
+
+<div class="contact-form-box">
+
+<form>
+
+<h3>Contact Form</h3>
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="email" placeholder="Your Email" required>
+
+<textarea placeholder="Your Message" rows="4"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* SCROLL REVEAL */
+
+function reveal(){
+document.querySelectorAll(".container").forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight - 100){
+el.classList.add("visible");
+}
+});
+}
+window.addEventListener("scroll", reveal);
+
+
+/* SKILL POPUP */
+
+const skillCards = document.querySelectorAll(".skill-card");
+const popup = document.getElementById("popup");
+
+skillCards.forEach(card => {
+
+card.addEventListener("click", () => {
+
+const text = card.querySelector("span").innerText;
+
+popup.textContent = text;
+
+popup.classList.add("show");
+
+setTimeout(()=>{
+popup.classList.remove("show");
+},2000);
+
+});
+
+});
+
+</script>
+</body>
+</html>
